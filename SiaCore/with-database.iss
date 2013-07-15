@@ -1,0 +1,59 @@
+[InstallShield Silent]
+Version=v7.00
+File=Response File
+[File Transfer]
+OverwrittenReadOnly=NoToAll
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-DlgOrder]
+Dlg0={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Welcome-0
+Count=14
+Dlg1={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-SdLicense2Rtf-0
+Dlg2={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Service Logon-0
+Dlg3={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Database Setup-0
+Dlg4={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Installer SQL Authentication-0
+Dlg5={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-0
+Dlg6={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Installer SQL Authentication-1
+Dlg7={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Database Setup-1
+Dlg8={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Installer SQL Authentication-2
+Dlg9={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Service SQL Authentication-0
+Dlg10={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Confirm-0
+Dlg11={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-1
+Dlg12={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-2
+Dlg13={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-3
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Welcome-0]
+Database=1
+Service=1
+Console=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-SdLicense2Rtf-0]
+Result=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Service Logon-0]
+User Name=%s\%s
+Password=%s
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Database Setup-0]
+Database Server=%s
+Database Name=%s
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Installer SQL Authentication-0]
+Windows Authentication=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-0]
+Result=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Installer SQL Authentication-1]
+Windows Authentication=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Database Setup-1]
+Database Server=%s
+Database Name=%s
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Installer SQL Authentication-2]
+Windows Authentication=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Service SQL Authentication-0]
+Windows Authentication=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Confirm-0]
+Target=%s\Intel\SCS8.2\
+[Application]
+Name=Intel(R) Setup and Configuration Software
+Version=8.2.0
+Company=Intel
+Lang=0009
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-1]
+Result=6
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-2]
+Result=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-MessageBox-3]
+Result=1

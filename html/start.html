@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<!-- Copyright (c) 2013 Ness Technologies
+
+     Filename:    start.html
+
+     Description: This file implements the User Interface of the Scs Installation Advisor (SIA). The UI is implemented as a set
+                  of pages (wizard style) where the user can navigate forward and backward along the pages.
+
+                  Business logic, combined with View Logic (a.k.a. View Model in MVVM model), which dictates the order of the
+                  pages, and the logic how to move from one page to another is implemented in a separated complementary file 
+                  ViewModel.js.
+
+     Limitation:  The Wizard Advisory UI is using the Ness.SIA ActiveX component. As such, the wizard can run only on
+                  Internet Explorer.
+
+                  The Wizard is using HTML5. Best experience is on IE10, but it is workable on IE8 and above.
+
+     Author:      Uri London
+     
+-->
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Scs Installation Advisor</title>
+  <link href="sia.css" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="head">
+      <h1>Intel SCS Installation Advisor</h1>
+    </div>
+
+    <div class="content">
+      <div class="content-bg"></div>
+
+      <!-- Welcome Page -->
+      <div id="welcome" class="page current">
+        <h2>Welcome to the SCS Installation Advisor</h2>
+        <p>
+          The SCS Installation Advisor (SIA) will help you to insatll and configure the Intel
+          Configuration Services server. It will verifty and help you set up prerequisites for
+          the software, and then run the Intel original insatller.
+        </p>
+        <p>
+          You can cancel this process at any point, simply by closing this browser, or navigate
+          to a different page.
+        </p>
+        <div class="welcome-img"></div>
+        <div class="br-warning">This wizard only work on Internet Explorer.</div>
+      </div>
+
+      <!-- License Agreement -->
+      <div id="eula" class="page right-band">
+        <h2>License Agreement</h2>
+        <div>Please read the following license agreement carefully:</div>
+        <div class="eula-well">
+          <iframe class="eula-frame" src="license.html"></iframe>
+          <div>
+            <input type="radio" value="accept" name="optionEula" checked="checked" />I accept the terms of the license agreement
+          </div>
+          <div>
+            <input type="radio" value="do-not-accept" name="optionEula" />I do not accept the terms of the license agreement
+          </div>
+        </div>
+      </div>
+
+      <!-- OneClick or Custom -->
+      <div id="oneclick-or-custom" class="page right-band">
+        <h2>OneClick or Custom</h2>
+        <div>
+          <div class="oneclick-or-custom-item oneclick-choice" data-onelick="true">
+            <div class="row">
+              <div class="span oneclick-radio-well">
+                <input type="radio" value="oneclick" name="option-oneclick" checked="checked" />
+              </div>
+              <div class="span oneclick-text-well">
+                <h3>OneClick</h3>
+                <div class="span oneclick-text-well hover-effect">
+                  With OneClick installation, Scs Installation Advisor will ask you minimum amount of questions (or typically
+                  not at all), and will make default choices for all questions.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="oneclick-or-custom-item" data-oneclick="false">
+            <div class="row">
+              <div class="span oneclick-radio-well">
+                <input type="radio" value="custom" name="option-oneclick" />
+              </div>
+              <div class="span oneclick-text-well">
+                <h3>Custom</h3>
+                <div class="span oneclick-text-well hover-effect">
+                  With custom installation, you are in control setting every aspect of the configuration. You
+                  will be assisted with guided help and recommendations.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Install Service -->
+      <div id="install-service" class="page right-band">
+        <h2>Install Service</h2>
+        <div>
+          <div>
+            <input id="install-svc-chkbox" type="checkbox" checked="checked" />
+            Install ServiceInstall the SCS service on this computer
+          </div>
+          <div class="dialog-well">
+            <div class="dialog-row">
+              <label>User Name: </label>
+              <input id="username-box" type="text" />
+            </div>
+            <div class="dialog-row">
+              <label>Password</label>
+              <input id="password-box" type="password" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Create database -->
+      <div id="create-db" class="page right-band">
+        <h2>Database Mode</h2>
+        <div>
+          <input id="create-db-chkbox" type="checkbox" checked="checked" />
+          While SCS can work without a database, the database mode is recommended. Intel SCS stores setup
+          configuration data of the Intel AMT on the database.
+        </div>
+        <div class="dialog-well">
+          <div class="dialog-row">
+            <label>Database Server:</label>
+            <!-- eventually a dropdown/combo box. For now, just edit box.
+            <select id="db-select"></select>
+            -->
+           <input id="db-select" type="text" />
+
+          </div>
+          <div class="dialog-row">
+            <label>Database Name:</label>
+            <!-- eventually a dropdown/combo box. For now, just edit box.
+            <select id="schema-select"></select>
+            -->
+            <input id="schema-select" />
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Install Console -->
+      <div id="install-console" class="page right-band">
+        <h2>Install Console</h2>
+        <div>
+          <input id="install-service-chkbox" type="checkbox" checked="checked" />
+          Install Console
+        </div>
+        <div class="dialog-well">
+        </div>
+      </div>
+
+
+      <!-- Action Page -->
+      <div id="install" class="page right-band">
+        <h2>Install</h2>
+        <p>Scs Installation Advisor is ready to install according to your settings:</p>
+        <ul>
+          <li>Install SCS</li>
+          <li>Create DB</li>
+          <li>Insatll Console</li>
+        </ul>
+        <input id="install-now" type="button" value="Install NOW" />
+      </div>
+
+      <!-- Report -->
+      <div id="report" class="page right-band">
+        <h2>Install</h2>
+        <p>SCS completed the installation</p>
+      </div>
+
+
+    </div>
+
+    <div class="foot">
+      <input type="button" class="prev-btn hover-effect disabled navbtn" value="< Back" id="prev" data-direction="next" />
+      <input type="button" class="next-btn hover-effect navbtn" value="Next >" id="next" data-direction="prev" />
+    </div>
+  </div>
+
+  <script type="text/javascript" src="libs/jquery/jquery-1.10.0.js"></script>
+  <script type="text/javascript" src="MockupAdvisor.js"></script>
+  <script type="text/javascript" src="bizlogic.js"></script>
+
+  <script type="text/javascript">
+
+    var current_page = pages.welcome;
+    var viewModel;
+
+    //
+    // Function:    JQuery initialization routine.
+    //
+    // Description: This function is called by JQuery when the entire page is loaded. This is when we instantiate the view
+    //              model, and initialize various UI fields according to results from the View Model.
+    //
+    $(function init() {
+      viewModel = new ViewModel();
+      viewModel.oncomplete = onComplete;
+      viewModel.onpropchanged = onPropChanged;
+      viewModel.init();
+
+      $('#username-box').val(viewModel.currentUser);
+
+      // initialize UI handling
+      pages.create_db.init = initDbPage;
+    });
+
+
+    //
+    // Functions:    page_nav
+    //
+    // Description: This is where we advance the wizard to the next page, or going back, according to logic in
+    //              the BL. Each page has a next() and prev() methods which will return the next page we should
+    //              navigate to according to logic defined in BL. We also calls methods to exit the previous
+    //              page and initialize the new page.
+    //
+
+    function page_nav(direction) {
+
+      // This is a good point to bind data back to the view model. This is kinda poor man binding system (a la
+      // knockout.js).
+      bindData(current_page.selector);
+
+      // see if we can leave
+      if (current_page.leave) {
+        var can_leave = current_page.leave();
+        if (!can_leave) {
+          return;
+        }
+      }
+
+      var new_page = (direction === 'left') ? current_page.next() : current_page.prev();
+      var other_direction = (direction === 'left') ? 'right' : 'left';
+
+      if (!new_page)
+        return;
+
+      slide(current_page, new_page, direction, other_direction);
+      current_page = new_page;
+
+      // call init method once
+      if (current_page.init && !current_page.initialized) {
+        current_page.init();
+        current_page.initialized = true;
+      }
+
+      // call  enter method
+      if (current_page.enter) {
+        current_page.enter();
+      }
+
+      updateNavButtons();
+    }
+
+    $('#next').click(function () {
+      page_nav('left');
+    });
+
+    $('#prev').click(function () {
+      page_nav('right');
+    });
+
+    // Do the actual CSS class manipulation to cause the pages to slide
+    function slide(c_page, n_page, direction, other_direction) {
+      $(c_page.selector).addClass('move-' + direction).on('transitionend', function () {
+        $(this).removeClass('move-' + direction).removeClass('current').addClass(direction + '-band');
+      });
+      $(n_page.selector).addClass('move-current').on('transitionend', function () {
+        $(this).removeClass('move-current').removeClass(other_direction + '-band').addClass('current');
+      });
+    }
+
+
+    function updateNavButtons() {
+      if (current_page.has_next())
+        $('.next-btn').removeClass('disabled');
+      else
+        $('.next-btn').addClass('disabled');
+
+      if (current_page.has_prev())
+        $('.prev-btn').removeClass('disabled');
+      else
+        $('.prev-btn').addClass('disabled');
+    }
+
+
+    $('.oneclick-or-custom-item').click(function () {
+      viewModel.oneclick = $(this).data('oneclick');
+      $(this).find('input').prop('checked', true);
+    });
+
+    $('#install-now').click(function () {
+      viewModel.installNow();
+    });
+
+
+    $('#eula input:radio').change(function () {
+      viewModel.acceptEula = ($(this).val() === 'accept') ? true : false;
+      updateNavButtons();
+    });
+
+    function initDbPage() {
+      /* Uncomment when back to comboxbox
+      servers = viewModel.findSqlServers();
+      $('#db-select').append($('<option></option>').attr('value', '---').text('Please Select'));
+      for (var i = 0; i < servers.length; ++i) {
+        $('#db-select').append($('<option></option>').attr('value', servers[i]).text(servers[i]));
+      }
+      $('#db-select').change();
+      */
+
+    }
+
+    $('#db-select').change(function () {
+      /* Uncomment when back to combobox
+      server = $('#db-select').val();
+      $('#schema-select').empty();
+      if (server !== '---') {
+        $('#schema-select').append($('<option></option>').attr('value', '---').text('Please Select'));
+        schemas = viewModel.findSchemasInServer(server);
+        for (var i = 0; i < servers.length; ++i) {
+          $('#schema-select').append($('<option></option>').attr('value', schemas[i]).text(schemas[i]));
+        }
+      }
+      */
+    });
+
+    function onComplete(status) {
+      // Move to the report page
+      var report_page = pages.report;
+      slide(current_page, report_page, 'left', 'right');
+      current_page = report_page;
+      updateNavButtons();
+    }
+
+
+    //
+    // Functions:   onPropChanged
+    //
+    // Description: This funciton is the key for the binding between properties of the ViewModel and fields on
+    //              the UI. Whenever the ViewModel changes a property, it will call this method, which will update
+    //              the appropriete field in the UI.
+    //              This way, the ViewModel doesn't have to "know" about the View. See MVVM pattern in WPF programming
+    //
+    function onPropChanged(prop, value) {
+
+      if (prop === 'mockup') {
+        if (value) {
+          $('.br-warning').show();
+        }
+      }
+
+    }
+
+
+    //
+    // Function:    bindData
+    //
+    // Description: This is the other way (from UI to ViewModel) of data binding.
+    //
+    function bindData(scope) {
+      if (scope == '#install-service') {
+        viewModel.installSvc = $('#install-svc-chkbox').prop('checked');
+        viewModel.svcAccntDomain = viewModel.svcAccntName = '';
+        username = $('#username-box').val().split('\\');
+        if (username.length == 2) {
+          viewModel.svcAccntDomain = username[0];
+          viewModel.svcAccntName = username[1];
+        }
+        viewModel.svcAccntPassword = $('#password-box').val();
+      }
+      else if (scope == '#create-db') {
+        viewModel.createDb = $('#create-db-chkbox').prop('checked');
+        viewModel.sqlServer = $('#db-select').val();
+        viewModel.sqlSchema = $('#schema-select').val();
+      }
+    }
+
+
+  </script>
+</body>
+</html>

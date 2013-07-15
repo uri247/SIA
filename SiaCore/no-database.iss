@@ -1,0 +1,35 @@
+[InstallShield Silent]
+Version=v7.00
+File=Response File
+[File Transfer]
+OverwrittenReadOnly=NoToAll
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-DlgOrder]
+Dlg0={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Welcome-0
+Count=6
+Dlg1={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-UserNeedDB-0
+Dlg2={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-SdLicense2Rtf-0
+Dlg3={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Service Logon-0
+Dlg4={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Confirm-0
+Dlg5={78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-SdFinish-0
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Welcome-0]
+Database=0
+Service=1
+Console=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-UserNeedDB-0]
+UseExistingDB=0
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-SdLicense2Rtf-0]
+Result=1
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Service Logon-0]
+User Name=%s\%s
+Password=%s
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-Confirm-0]
+Target=C:\Program Files\Intel\SCS8.2\
+[Application]
+Name=Intel(R) Setup and Configuration Software
+Version=8.2.0
+Company=Intel
+Lang=0009
+[{78A13CBB-40C7-4E11-9405-38C5C3A98AB5}-SdFinish-0]
+Result=1
+bOpt1=0
+bOpt2=0

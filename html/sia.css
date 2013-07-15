@@ -1,0 +1,262 @@
+
+/* ----------------------------------------  General ----------------------------------------*/
+body {
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    color: #515151;
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+
+.container {
+    width: 700px;
+    border: solid black 1px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(bg.png);
+}
+
+/* ---------------------------------------- Misc  ---------------------------------------- */
+.row {
+}
+
+.row:after {
+  clear: both;
+  display: block;
+  content: "";
+}
+
+.span {
+    float: left;
+}
+
+.hover-effect {
+}
+
+.hover-effect:hover {
+    color: red;
+    transition-duration: 600ms;
+    transition-property: color;
+}
+
+.well {
+    position: relative;
+}
+
+/* ---------------------------------------- Header ----------------------------------------*/
+.head {
+    /*background-color: #0060aa;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    font-size: 22px;
+    color: white;
+    line-height: 24px;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+/* ---------------------------------------- Content area ---------------------------------------- */
+.content {
+    overflow: hidden;
+    height: 464px;
+    position: relative;
+    color: #5a5a5a;
+    font-family: 'Arial Narrow';
+    font-size: 16px;
+}
+
+h2 {
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    font-size: 29px;
+    color: #0674b6;
+}
+
+h3 {
+    font-family: 'Segoe UI';
+    font-size: 26px;
+    font-weight: lighter;
+    color: #0674b6;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* ---------------------------------------- Sliding ---------------------------------------- */
+.page {
+    position: absolute;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: 680px;
+    height: 464px;
+    overflow: hidden;
+}
+
+.page.right-band {
+    left: 700px;
+}
+
+.page.left-band {
+    left: -700px;
+}
+
+.page.current {
+    display: block;
+    left: 0px;
+}
+
+.page.current.move-left, .page.left-band.move-current, .page.right-band.move-current, .page.current.move-right {
+    transition-duration: 240ms;
+    transition-property: left;
+    display: block;
+}
+
+.page.current.move-left {
+    left: -700px;
+}
+
+.page.current.move-right {
+    left: 700px;
+}
+
+.page.move-current {
+    left: 0px;
+}
+
+
+/* ---------------------------------------- Bottom area ---------------------------------------- */
+.foot {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    height: 36px;
+    position: relative;
+}
+
+
+.btn {
+}
+
+.next-btn, .prev-btn {
+    background-image: linear-gradient(to bottom, #ffffff, #40930f);
+    color: white;
+    font-size: 24px;
+    line-height: 28px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    background-repeat: repeat-x;
+    border: 0px;
+    padding: 4px 12px;
+    margin: 0px 30px;
+}
+
+.next-btn {
+    background-image: linear-gradient(to bottom, #368903, #489718);                                                          
+    float: right;
+}
+
+.prev-btn {
+    background-image: linear-gradient(to bottom, #0884C2, #0372b3);
+    float: left;
+}
+
+.next-btn.disabled, .prev-btn.disabled {
+    background-image: linear-gradient(to bottom, #ffffff, #808080);
+    display: none;
+}
+
+.br-warning {
+    position: absolute;
+    bottom: 0px;
+    color: red;
+    font-size: 11px;
+    display: none;
+}
+
+
+/* ---------------------------------------- Specific Pages ----------------------------------------*/
+
+/* ---------- welcome */
+.welcome-img {
+    background-image: url('welcome-img.jpg');
+    width: 700px;
+    height: 284px;
+    margin-left: -10px;
+}
+
+/* ---------- Eula */
+.eula-well {
+    border: solid 1px grey;
+    overflow: hidden;
+}
+.eula-frame {
+    width: 100%;
+    height: 290px;
+    margin-bottom: 12px;
+}
+
+.eula-body {
+    font-family: Arial;
+    font-size: 12px;
+    color: #3b3b3b;
+}
+
+/* ---------- oneclick-or-custom page */
+.oneclick-or-custom-item {
+    margin-top: 15px;
+    cursor: pointer;
+    height: 166px;
+    width: 675px;
+    padding-top: 22px;
+    padding-left: 12px;
+}
+
+.oneclick-choice {
+    background: url('one-click.png');
+    background-repeat: no-repeat;
+}
+
+.oneclick-choice:hover {
+    background-position-y: -188px;
+}
+
+.oneclick-radio-well {
+    padding: 44px 24px 44px 24px;
+}
+
+.oneclick-text-well {
+    width: 400px;
+    height: 100px;
+}
+
+
+/* ---------- Install service and Install DB */
+
+.dialog-well {
+    margin-top: 24px;
+    height: 112px;
+    background-image: url('dialog-bg.jpg');
+    padding: 24px 0px 0px 44px;
+    height: 112px;
+}
+
+.dialog-row {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.dialog-row input,
+.dialog-row select
+{
+    line-height: 20px;
+    height: 24px;
+    left: 120px;
+    position: absolute;
+    width: 260px;
+}

@@ -1,0 +1,22 @@
+#.gitignore file
+
+Debug/
+Release/
+ipch/
+sample-iss/
+
+dlldata.c
+*.user
+*_i.c
+*_i.h
+*_p.c
+*.sdf
+*.swp
+*.suo
+*.opensdf
+*.aps
+
+
+#*~
+#*.pyc
+

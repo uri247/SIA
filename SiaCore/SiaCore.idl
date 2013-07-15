@@ -1,0 +1,122 @@
+// SiaCore.idl : IDL source for SiaCore
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SiaCore.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(05D85121-CC70-45A1-A7CD-B9F813CE7D07),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IScsInstallationAdvisor : IDispatch{
+	[propget, id(3000), helpstring("Returns TRUE/FALSE whether Intel SCS already installed on the machine")] 
+	HRESULT isScsInstalled([out, retval] VARIANT_BOOL* pVal);
+
+	[propget, id(3001), helpstring("A set of installation parameters to be used during Scs installation")] HRESULT installParams([out, retval] IDispatch** pVal);
+	[propput, id(3001), helpstring("A set of installation parameters to be used during Scs installation")] HRESULT installParams([in] IDispatch* newVal);
+
+	[id(3002), helpstring("Install all prerequisite and the Scs product according to negotiated params")] HRESULT installAll(void);
+
+	[id(3003), helpstring("Wait Synchronously until execution completes")] HRESULT wait(void);
+
+	[propget, id(3004), helpstring("Set a callback routine for completing installation")] HRESULT oncomplete([out, retval] VARIANT* pVal);
+	[propput, id(3004), helpstring("Set a callback routine for completing installation")] HRESULT oncomplete([in] VARIANT newVal);
+
+	[propget, id(3005), helpstring("fqdn computer name")] HRESULT computerName([out, retval] BSTR* pVal);
+
+	[propget, id(3006), helpstring("The current logged in user")] HRESULT currentUser([out, retval] BSTR* pVal);
+
+	[id(3007)] HRESULT _fireOnComplete([in] LONG status);
+
+	[id(3008), helpstring("test if service account is valid")] HRESULT testUser([in] BSTR accountDomain, [in] BSTR accountName, [in] BSTR accountPasswd, [out, retval] BSTR* pVal);
+
+	[id(3009), helpstring("Verify Option 15 of DHCP server")] HRESULT checkDhcpOption15([out, retval] BSTR* pVal);
+
+	[id(3050)] HRESULT test(void);
+
+};
+
+
+[
+	object,
+	uuid(5C9EAC5F-C03F-49FA-AA3A-73B05655C562),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ISiaInstallArguments : IDispatch {
+	[propget, id(3100), helpstring("Create and Install an Intel SCS Database on MsSQL Server")] HRESULT createDatabase([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(3100), helpstring("Create and Install an Intel SCS Database on MsSQL Server")] HRESULT createDatabase([in] VARIANT_BOOL newVal);
+
+	[propget, id(3101), helpstring("Install the Scs Service on this computer")] HRESULT installService([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(3101), helpstring("Install the Scs Service on this computer")] HRESULT installService([in] VARIANT_BOOL newVal);
+
+	[propget, id(3102), helpstring("Install a console on this computer")] HRESULT installConsole([out, retval] VARIANT_BOOL* pVal);
+	[propput, id(3102), helpstring("Install a console on this computer")] HRESULT installConsole([in] VARIANT_BOOL newVal);
+
+	[propget, id(3103), helpstring("The service account domain name")] HRESULT serviceAccountDomain([out, retval] BSTR* pVal);
+	[propput, id(3103), helpstring("The service account domain name")] HRESULT serviceAccountDomain([in] BSTR newVal);
+
+	[propget, id(3104), helpstring("The service account user name")] HRESULT serviceAccountUser([out, retval] BSTR* pVal);
+	[propput, id(3104), helpstring("The service account user name")] HRESULT serviceAccountUser([in] BSTR newVal);
+
+	[propget, id(3105), helpstring("The service account password")] HRESULT serviceAccountPassword([out, retval] BSTR* pVal);
+	[propput, id(3105), helpstring("The service account password")] HRESULT serviceAccountPassword([in] BSTR newVal);
+
+	[propget, id(3106), helpstring("Full path to RCS Installer")] HRESULT installerLocation([out, retval] BSTR* pVal);
+	[propput, id(3106), helpstring("Full path to RCS Installer")] HRESULT installerLocation([in] BSTR newVal);
+
+	[propget, id(3107), helpstring("Name of SQL server")] HRESULT sqlServer([out, retval] BSTR* pVal);
+	[propput, id(3107), helpstring("Name of SQL server")] HRESULT sqlServer([in] BSTR newVal);
+
+	[propget, id(3108), helpstring("Name of Schema")] HRESULT sqlSchema([out, retval] BSTR* pVal);
+	[propput, id(3108), helpstring("Name of Schema")] HRESULT sqlSchema([in] BSTR newVal);
+
+};
+
+
+
+[
+	uuid(B40EC552-4413-4C9B-8A45-5BDE33E14918),
+	version(1.0),
+]
+library SiaCoreLib
+{
+	importlib("stdole2.tlb");
+
+	[
+		uuid(40F5A2F8-C9D1-4828-8CEC-D230782CEDBA),
+	]
+	dispinterface _ISiaEvents
+	{
+		properties:
+		methods:
+	        [id(800)] HRESULT completed([in]LONG status);
+	};
+
+
+	[
+		uuid(B4B4DCE9-2484-400C-9B64-7C3288D432B8)		
+	]
+	coclass ScsInstallationAdvisor
+	{
+		[default] interface IScsInstallationAdvisor;
+		[default, source] dispinterface _ISiaEvents;
+	};
+
+
+	[
+		uuid(4B8D7CD1-2B7E-4D33-99F9-53EAD6520D2A)		
+	]
+	coclass SiaInstallArguments
+	{
+		[default] interface ISiaInstallArguments;
+	};
+};
+

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{8cff2500-0a2c-468d-8f73-26ddc1882a0b}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SiaCore_i.c">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScsInstallationAdvisor.cpp" />
+    <ClCompile Include="SiaCore.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="SiaInstallArguments.cpp" />
+    <ClCompile Include="IssInstallerExecutor.cpp" />
+    <ClCompile Include="network.cpp" />
+    <ClCompile Include="user.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SiaCore_i.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ScsInstallationAdvisor.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="SiaCore.h" />
+    <ClInclude Include="SiaInstallArguments.h" />
+    <ClInclude Include="IssInstallerExecutor.h" />
+    <ClInclude Include="errors.h" />
+    <ClInclude Include="_ISiaEvents_CP.H" />
+    <ClInclude Include="network.h" />
+    <ClInclude Include="GlobalIntfTable.h" />
+    <ClInclude Include="user.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SiaCore.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SiaCore.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ScsInstallationAdvisor.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="SiaCore.def" />
+    <None Include="SiaInstallArguments.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="no-database.iss">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="with-database.iss">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="SiaCore.idl" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,26 @@
+HKCR
+{
+	Ness.ScsInstallationAdvisor.1 = s 'ScsInstallationAdvisor Class'
+	{
+		CLSID = s '{B4B4DCE9-2484-400C-9B64-7C3288D432B8}'
+	}
+	Ness.ScsInstallationAdvisor = s 'ScsInstallationAdvisor Class'
+	{		
+		CurVer = s 'Ness.ScsInstallationAdvisor.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B4B4DCE9-2484-400C-9B64-7C3288D432B8} = s 'ScsInstallationAdvisor Class'
+		{
+			ProgID = s 'Ness.ScsInstallationAdvisor.1'
+			VersionIndependentProgID = s 'Ness.ScsInstallationAdvisor'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{B40EC552-4413-4C9B-8A45-5BDE33E14918}'
+			Version = s '1.0'
+		}
+	}
+}

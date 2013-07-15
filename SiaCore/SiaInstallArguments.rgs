@@ -1,0 +1,16 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {4B8D7CD1-2B7E-4D33-99F9-53EAD6520D2A} = s 'SiaInstallArguments Class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{B40EC552-4413-4C9B-8A45-5BDE33E14918}'
+			Version = s '1.0'
+		}
+	}
+}
